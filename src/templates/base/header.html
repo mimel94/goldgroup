@@ -1,0 +1,43 @@
+{% load staticfiles %}
+<header class="">
+  <figure>
+    <img class="responsive-img logo_img" src="{% static 'img/logoclaro.png'%}" alt="" />
+    <figcaption>GoldGroup</figcaption>
+  </figure>
+  <div class="login">
+    {% if not user.is_authenticated %}
+      <div class="row">
+        <form action=. method="POST" class="col s12">{% csrf_token %}
+          <div class="row">
+            <div class="input-field col s5">
+              <i class="material-icons prefix">account_circle</i>
+              <input type="text" id="user" class="validate" name="user">
+              <label for="user">Usuario</label>
+            </div><!--end s5-->
+            <div class="input-field col s5">
+              <i class="material-icons prefix">lock_outline</i>
+              <input type="password" id="password" class="validate" name="password">
+              <label for="password">Contraseña</label>
+            </div><!--end s5-->
+            <div class="input-field col s2">
+              <button type="submit" class="waves-effect waves-light btn"
+              {% if error %}
+                onload="Materialize.toast('{{ error }}', 4000)"
+              {% endif %}name="button">Entrar</button>
+            </div>
+          </div><!--end row2-->
+        </form><!--end form-->
+      </div><!--end row1-->
+    {% else %}
+      <div class="user_login ">
+        <div class="row col s12">
+          <h5 class="col s8">Bienvenido {{ user }}</h5>
+          <div class="input-field col s4">
+            <a class="waves-effect waves-light btn" href="{% url 'index_administrator'%}">Entrar</a>
+          </div>
+        </div><!--end row-->
+
+      </div>
+    {% endif %}
+  </div><!--end login-->
+</header>

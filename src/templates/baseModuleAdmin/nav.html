@@ -1,0 +1,68 @@
+{% load static %}
+<!-- Nav Lateral -->
+<section class="NavLateral full-width">
+    <div class="NavLateral-FontMenu full-width ShowHideMenu"></div>
+    <div class="NavLateral-content full-width">
+        <header class="NavLateral-title full-width center-align">
+            GoldGroup <i class="zmdi zmdi-close NavLateral-title-btn ShowHideMenu"></i>
+        </header>
+        <figure class="full-width NavLateral-logo">
+            <img src="{% static 'img/claro.png'%}" alt="material-logo" class="responsive-img center-box">
+            <figcaption class="center-align">GoldGroup Neiva</figcaption>
+        </figure>
+        <div class="NavLateral-Nav">
+            <ul class="full-width">
+                <li class="NavLateralDivider"></li>
+                <li>
+                    <a href="#" class="NavLateral-DropDown  waves-effect waves-light"><i class="zmdi zmdi-language-css3 zmdi-hc-fw"></i> <i class="zmdi zmdi-chevron-down NavLateral-CaretDown"></i> Asesores</a>
+                    <ul class="full-width">
+                        <li><a href="#" class="waves-effect waves-light">Crear asesor</a></li>
+                        <li class="NavLateralDivider"></li>
+                        <li><a href="#" class="waves-effect waves-light">Asesores Activos</a></li>
+                        <li class="NavLateralDivider"></li>
+                        <li><a href="#" class="waves-effect waves-light">Asesores Inactivos</a></li>
+
+                    </ul>
+                </li>
+                <li class="NavLateralDivider"></li>
+                <li>
+                    <a href="#" class="NavLateral-DropDown  waves-effect waves-light"><i class="zmdi zmdi-widgets zmdi-hc-fw"></i> <i class="zmdi zmdi-chevron-down NavLateral-CaretDown"></i> Operaciones</a>
+                    <ul class="full-width">
+                      <li><a href="#" class="waves-effect waves-light">Generar Formatos</a></li>
+                      <li class="NavLateralDivider"></li>
+                      <li><a href="#" class="waves-effect waves-light">Asignar Contratos</a></li>
+                      <li class="NavLateralDivider"></li>
+                      <li><a href="#" class="waves-effect waves-light">Asignar Linea Cgv</a></li>
+                      <li class="NavLateralDivider"></li>
+                      <li><a href="#" class="waves-effect waves-light">Asignar Codigo</a></li>
+                    </ul>
+                </li>
+                <li class="NavLateralDivider"></li>
+                <li>
+                    <a href="#" class="NavLateral-DropDown  waves-effect waves-light"><i class="zmdi zmdi-view-web zmdi-hc-fw"></i> <i class="zmdi zmdi-chevron-down NavLateral-CaretDown"></i> Liquidación </a>
+                    <ul class="full-width">
+                        <li><a href="#" class="waves-effect waves-light">Liquidación mes</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Page content -->
+<section class="ContentPage full-width">
+    <!-- Nav Info -->
+    <div class="ContentPage-Nav full-width">
+        <ul class="full-width">
+            <li class="btn-MobileMenu ShowHideMenu"><a href="#" class="tooltipped waves-effect waves-light" data-position="bottom" data-delay="50" data-tooltip="Menu"><i class="zmdi zmdi-more-vert"></i></a></li>
+            <li><figure><img src="{% static 'assets/img/user.png'%}" alt="UserImage"></figure></li>
+            <li style="padding:0 5px;">{{user}}</li>
+            <li><a href="{% url 'logout' %}" class="tooltipped waves-effect waves-light btn-ExitSystem" data-position="bottom" data-delay="50" data-tooltip="Salir"><i class="zmdi zmdi-power"></i></a></li>
+            <!--<li><a href="#" class="tooltipped waves-effect waves-light btn-Search" data-position="bottom" data-delay="50" data-tooltip="Search"><i class="zmdi zmdi-search"></i></a></li>-->
+            <!--<li>
+                <a href="#" class="tooltipped waves-effect waves-light btn-Notification" data-position="bottom" data-delay="50" data-tooltip="Notifications">
+                    <i class="zmdi zmdi-notifications"></i>
+                    <span class="ContentPage-Nav-indicator bg-danger">2</span>
+                </a>
+            </li>-->
+        </ul>
+    </div>

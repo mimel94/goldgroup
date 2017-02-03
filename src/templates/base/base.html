@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <!--Css materialize version v0.98.0 -->
+    <link rel="stylesheet" href="{% static 'materialize/css/materialize.min.css' %}" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="{% static 'materialize/css/website.css' %}">
+    {% block extraCss %}{% endblock %}
+    <title>{% block title %}GoldGroup{% endblock %}</title>
+  </head>
+  <body>
+    {% block header %}{% include 'base/header.html' %}{% endblock %}
+
+    {% block nav %}{% include 'base/nav.html'%}{% endblock %}
+
+    {% block content %}{% endblock %}
+
+    {% block footer %}{% endblock %}
+    <!--Jquery version 3.1.1.min -->
+    <script src="{% static 'materialize/js/jquery.min.js'%}" charset="utf-8"></script>
+    <!--Js materialize version v0.98.0 -->
+    <script src="{% static 'materialize/js/materialize.min.js'%}" charset="utf-8"></script>
+    {% block extraJsSrc %}{% endblock %}
+    <script>
+      $(document).ready(function(){
+        {% block javaScript %}{% endblock %}
+      });
+    </script>
+  </body>
+</html>

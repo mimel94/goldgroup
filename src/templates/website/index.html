@@ -1,0 +1,13 @@
+{% extends 'base/base.html'%}
+{% block extraCss %}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+{% endblock %}
+{% block javaScript %}
+{% if error %}
+// Materialize.toast(message, displayLength, className, completeCallback);
+Materialize.toast('{{ error }}', 4000) // 4000 is the duration of the toast
+{% endif %}
+{% endblock %}

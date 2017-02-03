@@ -1,0 +1,49 @@
+{% load staticfiles %}
+<!--
+* Copyright 2016 Carlos Eduardo Alfaro Orellana
+-->
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <!-- Normalize CSS -->
+   <link rel="stylesheet" href="{% static 'materializeAdministrator/css/normalize.css'%}">
+
+    <!-- Materialize CSS -->
+   <link rel="stylesheet" href="{% static 'materializeAdministrator/css/materialize.min.css'%}">
+
+    <!-- Material Design Iconic Font CSS -->
+   <link rel="stylesheet" href="{% static 'materializeAdministrator/css/material-design-iconic-font.min.css'%}">
+
+   <!-- Malihu jQuery custom content scroller CSS -->
+   <link rel="stylesheet" href="{% static 'materializeAdministrator/css/jquery.mCustomScrollbar.css'%}">
+
+   <!-- Sweet Alert CSS -->
+     <link rel="stylesheet" href="{% static 'materializeAdministrator/css/sweetalert.css'%}">
+
+   <!-- MaterialDark CSS -->
+   <link rel="stylesheet" href="{% static 'materializeAdministrator/css/style.css'%}">
+    {% block extraCss %}{% endblock %}
+    <title>{% block title %}GoldGroup{% endblock %}</title>
+  </head>
+  <body>
+    {% block nav %}{% include 'baseModuleAdmin/nav.html'%}{% endblock %}
+
+    {% block content %}{% endblock %}
+
+    {% block footer %}{% endblock %}
+    <!-- Sweet Alert JS -->
+    <script src="{% static 'materializeAdministrator/js/sweetalert.min.js'%}"></script>
+    <!--Jquery version 3.1.1.min -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{% static 'materializeAdministrator/js/jquery-2.2.0.min.js' %}"><\/script>')</script>
+    <!-- Materialize JS -->
+    <script src="{% static 'materializeAdministrator/js/materialize.min.js' %} "></script>
+    <!-- Malihu jQuery custom content scroller JS -->
+    <script src="{% static 'materializeAdministrator/js/jquery.mCustomScrollbar.concat.min.js'%}"></script>
+    <!-- MaterialDark JS -->
+	  <script src="{% static 'materializeAdministrator/js/main.js'%}"></script>
+    {% block extraJsSrc %}{% endblock %}
+    
+  </body>
+</html>
