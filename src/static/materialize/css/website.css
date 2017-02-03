@@ -1,0 +1,45 @@
+
+header{
+  height: 90px;
+  width: 100%;
+}
+figure{
+  float: left;
+  text-align: center;
+}
+
+header .logo_img {
+  width: 130px;
+  padding: 0 15px 0 15px;
+}
+
+.login{
+  width: 40%;
+  float: right;
+  margin-right: 8%;
+  display: inline-block;
+}
+.login button{
+  margin-top: 10px;
+}
+
+.login form{
+  margin-top: 14px;
+}
+
+.error {
+  float: right;
+  display: inline-block;
+  width: 15%;
+  margin-top: 2.5%;
+  margin-right: -15px;
+  margin-right: -4%;
+}
+
+.user_login{
+  width: 60%;
+  float: right;
+}
+a:link{
+  text-decoration: none;
+}
