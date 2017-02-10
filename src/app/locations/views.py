@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import json
 from .models import Country, State, City
-import requests
+
 # Create your views here.
 
 def get_countries(request):
