@@ -25,7 +25,8 @@ class MyUserGoldGroupManager(BaseUserManager):
         if not email:
             raise ValueError('El usuario debe tener dirección de correo')
         user = self.model(email=self.normalize_email(email), **extra_fields)
-        user.set_password(password)
+        user.password = make_password(raw_password)
+        #user.set_password(password)
         if admin:
             user.is_superuser = True
             user.is_staff = True
@@ -50,7 +51,7 @@ class UserGoldGroup(AbstractBaseUser, PermissionsMixin):
     gender = models.CharField(max_length=1, choices=choice_gender)
     birthdate = models.DateField()
     phone = models.CharField(max_length=20)
-    #city_residence = models.ForeignKey(City)
+    city_residence = models.ForeignKey(City, null=True)
     address_residence = models.CharField(max_length=250)
     email = models.EmailField(unique=True)
     is_staff = models.BooleanField(default=False)
@@ -67,7 +68,7 @@ class UserGoldGroup(AbstractBaseUser, PermissionsMixin):
         'gender',
         'birthdate',
         'phone',
-        #'city_residence',
+        'city_residence',
         'address_residence',
         'email'
     ]
@@ -78,8 +79,8 @@ class UserGoldGroup(AbstractBaseUser, PermissionsMixin):
         verbose_name = 'Usuario'
         verbose_name_plural = 'Usuarios'
 
-    def set_password(self, raw_password):
-        self.password = make_password(raw_password)
+    #def set_password(self, raw_password):
+    #    self.password = make_password(raw_password)
 
     def get_full_name(self):
         return '{0} {1}'.format(self.first_name, self.first_surname)
@@ -125,11 +126,11 @@ class LineCgv(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(UserGoldGroup)
-    phone_other = models.CharField(max_length=20)
-    bank_account = models.CharField(max_length=50)
-    bank = models.ForeignKey(Bank)
-    code = models.ForeignKey(Code)
-    line_cgv = models.ForeignKey(LineCgv)
+    phone_other = models.CharField(max_length=20, blank=True, null=True)
+    bank_account = models.CharField(max_length=50, blank=True, null=True)
+    bank = models.ForeignKey(Bank, blank=True, null=True)
+    code = models.ForeignKey(Code, blank=True, null=True)
+    line_cgv = models.ForeignKey(LineCgv, blank=True, null=True)
 
     class Meta:
         verbose_name = 'Perfil de usuario'
