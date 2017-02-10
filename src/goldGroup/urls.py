@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('app.website.urls')),
     url(r'', include('app.users.urls')),
+    url(r'', include('app.locations.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -87,6 +87,15 @@ DATABASES = {
     }
 }
 
+#PASSWORD hashers
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.MD5PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -116,7 +125,7 @@ TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
@@ -133,3 +142,13 @@ MEDIA_ROOT = '/media/'
 # customizing users
 
 AUTH_USER_MODEL = 'users.UserGoldGroup'
+
+#format date
+DATE_INPUT_FORMATS = ['%b %d %Y',      # 'Oct 25 2006'
+ '%b %d, %Y',     # 'Oct 25, 2006'
+ '%d %b %Y',      # '25 Oct 2006'
+ '%d %b, %Y',     # '25 Oct, 2006'
+ '%B %d %Y',      # 'October 25 2006'
+ '%B %d, %Y',     # 'October 25, 2006'
+ '%d %B %Y',      # '25 October 2006'
+ '%d %B, %Y']     # '25 October, 2006'
