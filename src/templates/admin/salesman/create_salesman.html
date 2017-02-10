@@ -1,0 +1,118 @@
+{% extends 'baseModuleAdmin/base.html' %}
+{% load static %}
+{% block title %}Crear Vendedor{% endblock %}
+{% block extraCss %} <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> {% endblock %}
+{% block content %}
+
+<div class="row">
+  <div class="col s12">
+    <form method="post">{% csrf_token %}
+      <div class="row">
+        <h4>Registro de asesores</h4>
+        {{ form.errors }}
+        {{ form2.errors }}
+        <br>
+        <h5>Datos personales</h5>
+        <div class="input-field col s3 l3 s12">
+          {{form.password}}
+          <label for="{{ form.password.name }}">{{ form.password.label }}</label>
+        </div>
+        <div class="input-field col s3 l3 s12">
+          {{form.type_document}}
+          <label for="{{ form.type_document.name }}">{{ form.type_document.label }}</label>
+        </div>
+        <div class="input-field col s3 l3 s12">
+          {{form.number_document}}
+          <label for="{{ form.number_document.name }}">{{ form.number_document.label }}</label>
+        </div>
+
+        <div class="input-field col s3 l3 s12">
+          {{form.first_name}}
+          <label for="{{ form.first_name.name }}">{{ form.first_name.label }}</label>
+        </div>
+
+
+      </div><!--end first row input-->
+      <div class="row">
+        <div class="input-field col s3 l3 s12">
+          {{form.last_name}}
+          <label for="{{ form.last_name.name }}">{{ form.last_name.label }}</label>
+        </div>
+        <div class="input-field col s3 l3 s12">
+          {{form.first_surname}}
+          <label for="{{ form.first_surname.name }}">{{ form.first_surname.label }}</label>
+        </div>
+        <div class="input-field col s3 l3 s12">
+          {{form.last_surname}}
+          <label for="{{ form.last_surname.name }}">{{ form.last_surname.label }}</label>
+        </div>
+        <div class="input-field col s3 l3 s12">
+          {{form.gender}}
+          <label for="{{ form.gender.name }}">{{ form.gender.label }}</label>
+        </div>
+
+      </div><!--end second row input-->
+      <div class="row">
+
+        <div class="input-field col s3 l3 s12">
+          {{form.birthdate}}
+          <label for="{{ form.birthdate.name }}">{{ form.birthdate.label }}</label>
+        </div>
+      </div><!--end second.1 row input-->
+      <br>
+      <h5>Datos de contacto</h5>
+      <br>
+      <div class="row">
+        <div class="input-field col s3 l3 s12">
+          <input type="hidden" id='country_Django' value="{{country}}">
+          <select name="country" class="countries browser-default" id="countryId">
+  					<option value="">Seleccione un País</option>
+  				</select>
+        </div>
+        <div class="input-field col s3 l3 s12">
+          <input type="hidden" id='state_Django' value="{{state}}">
+          <select name="state" class="states browser-default" id="stateId">
+  					<option value="">Seleccione un Estado</option>
+  				</select>
+        </div>
+        <div class="input-field col s3 l3 s12">
+          <input type="hidden" id='city_Django' value="{{city}}">
+          <select class="cities browser-default" id="cityId" name='city_residence'>
+  					<option value="">Seleccione una ciudad</option>
+  				</select>
+        </div>
+        <div class="input-field col s3 l3 s12">
+          {{form.address_residence}}
+          <label for="{{ form.address_residence.name }}">{{ form.address_residence.label }}</label>
+        </div>
+      </div><!--end third row input-->
+      <div class="row">
+        <div class="input-field col s3 l3 s12">
+          {{form.phone}}
+          <label for="{{ form.phone.name }}">{{ form.phone.label }}</label>
+        </div>
+        <div class="input-field col s3 l3 s12">
+          {{form2.phone_other}}
+          <label for="{{ form2.phone_other.name }}">{{ form2.phone_other.label }}</label>
+        </div>
+        <div class="input-field col s3 l3 s12">
+          {{form.email}}
+          <label for="{{ form.email.name }}">{{ form.email.label }}</label>
+        </div>
+      </div><!--end fourth row input-->
+      <br>
+      <div class="row">
+        <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
+          <i class="material-icons right">send</i>
+        </button>
+      </div><!--end row button-->
+    </form><!--end form-->
+  </div><!--firs div -->
+</div><!--firs row -->
+
+
+</section>
+{% endblock %}
+{% block extraJsSrc%}
+<script src="{% static 'locations/locations.js' %}"></script>
+{% endblock %}
