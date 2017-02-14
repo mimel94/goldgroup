@@ -1,8 +1,8 @@
 #-*- coding:utf-8 -*-
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
-from django.views.generic import TemplateView, CreateView
-from .models import UserProfile
+from django.views.generic import TemplateView, CreateView, ListView, View, UpdateView
+from .models import UserProfile, UserGoldGroup
 from .forms import UserGoldGroupForm, UserProfileForm
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.contrib.auth.hashers import make_password
@@ -47,3 +47,42 @@ class CreateSalesman(CreateView):
             context = {'form':form,'form2':form2, 'country':country,
                         'state':state, 'city':city}
             return render(request, self.template_name, context)
+
+class ActiveSalesman(ListView):
+    model = UserProfile
+    template_name = 'admin/salesman/actives_salesman.html'
+    active = ''
+
+    def get_context_data(self, **kwargs):
+        context = super(self.__class__,self).get_context_data(**kwargs)
+        if self.active == 'yes':
+            context_active = True
+        else:
+            context_active = False
+        context['salesmen'] = self.model.objects.filter(
+            user__is_active=context_active,
+            user__is_salesman=True
+        )
+        return context
+
+class ActiveSalesmanUpdateState(UpdateView):
+    model = UserProfile
+    template_name = 'admin/salesman/actives_salesman.html'
+
+    def get_object(self):
+        return get_object_or_404(self.model, pk=self.kwargs['pk'])
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.object.user.is_active:
+            salesman = self.model.objects.get(pk=self.object.pk)
+            obj_user = UserGoldGroup.objects.get(id=salesman.user.id)
+            obj_user.is_active = False
+            obj_user.save()
+            return HttpResponseRedirect(reverse('actives_salesman'))
+        else:
+            salesman = self.model.objects.get(pk=self.object.pk)
+            obj_user = UserGoldGroup.objects.get(id=salesman.user.id)
+            obj_user.is_active = True
+            obj_user.save()
+            return HttpResponseRedirect(reverse('inactives_saleman'))
