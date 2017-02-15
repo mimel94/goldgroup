@@ -1,18 +1,20 @@
 {% extends 'baseModuleAdmin/base.html'%}
-{% block title %}Estado de vendedores{% endblock %}
+{% block title %}Estado de asesores{% endblock %}
 {% block content %}
   <div class="row">
     <div class="col s12">
       <table class="responsive-table striped ">
-        <h4>Lista de asesores </h4>
+        <h4>Lista de asesores {% if active %}activos{% else %}inactivos{% endif %} </h4>
         <thead>
           <tr>
             <td>No.</td>
             <td>Nombre del asesor</td>
             <td>Telefono personal</td>
+            <td>Corportativo</td>
+            <td>No.Documento</td>
+            <td>Codigo</td>
             <td>Estado</td>
-            <td>linea cgv</td>
-            <td>{% if salesman.user.is_active %}Desactivar{% else %}Activar{% endif %}</td>
+            <td>{% if active %}Desactivar{% else %}Activar{% endif %}</td>
             <td></td>
           </tr>
         </thead>
@@ -22,8 +24,11 @@
             <td>{{forloop.counter}}</td>
             <td>{{salesman.user.get_full_name}}</td>
             <td>{{salesman.user.phone}}</td>
-            <td>{% if salesman.user.is_active %}Activo {% else %} Inactivo{% endif %}</td>
             <td>{% if salesman.line_cgv is None %}No tiene {% else %} {{ salesman.line_cgv }}{% endif %}</td>
+            <td>{{salesman.user.number_document}}</td>
+            <td>{%if salesman.code is None %}No tiene{% else %}{{salesman.code}}{% endif %}</td>
+            <td>{% if salesman.user.is_active %}Activo {% else %} Inactivo{% endif %}</td>
+
             <td><a href="{% url 'update_state_salesman' salesman.pk%}">{% if salesman.user.is_active %}Desactivar{% else %}Activar{% endif %}</a></td>
             <td><a href="#">Mas información</a></td>
           </tr>
