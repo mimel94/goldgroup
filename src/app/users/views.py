@@ -63,6 +63,7 @@ class ActiveSalesman(ListView):
             user__is_active=context_active,
             user__is_salesman=True
         )
+        context['active']=context_active
         return context
 
 class ActiveSalesmanUpdateState(UpdateView):
