@@ -1,0 +1,73 @@
+{% extends 'baseModuleAdmin/base.html'%}
+{% load static %}
+{% block title %}Asesor {{salesman.user.get_full_name}}{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col s12">
+    <h4>Información</h4>
+    <hr>
+    <br>
+    <h5>Datos personales</h5>
+    <hr class="hr_infor"><br><br>
+    <div class="row">
+        <div class="col s3 l3 s12">
+          <div class="more_infor_mayus">Nombre Completo</div>
+          {{salesman.user.first_name}} {{ salesman.user.last_name}} {{ salesman.user.first_surname }} {{salesman.user.last_surname }}
+        </div>
+        <div class="col s3 l3 s12">
+          <div class="more_infor_mayus">Documento</div>
+          {{salesman.user.number_document}}
+        </div>
+        <div class="col s3 l3 s12">
+          <div class="more_infor_mayus">Cumpleaños</div>
+          {{salesman.user.birthdate}}
+        </div>
+        <div class="col s3 l3 s12">
+          <div class="more_infor_mayus">Ciudad</div>
+          {{salesman.user.city_residence}}
+        </div>
+    </div><!--end row -->
+    <div class="row">
+      <div class="col s3 l3 s12">
+        <div class="more_infor_mayus">Dirección de residencia</div>
+        {{salesman.user.address_residence}}
+      </div>
+      <div class="col s3 l3 s12">
+        <div class="more_infor_mayus">Telefono</div>
+        {{salesman.user.phone}}
+      </div>
+      <div class="col s3 l3 s12">
+        <div class="more_infor_mayus">Celular</div>
+        {{salesman.phone_other}}
+      </div>
+      <div class="col s3 l3 s12">
+        <div class="more_infor_mayus">Correo</div>
+        {{salesman.user.email}}
+      </div>
+    </div><!--end row-->
+    <br>
+    <h5>Datos de la empresa</h5>
+    <hr class="hr_infor"><br><br>
+    <div class="row">
+      <div class="col s3 l3 s12">
+        <div class="more_infor_mayus">Corporativo</div>
+        {% if salesman.line_cgv is None %}No asignado {% else %}{{salesman.line_cgv}} {% endif %}
+      </div>
+      <div class="col s3 l3 s12">
+        <div class="more_infor_mayus">Codigo</div>
+        {% if salesman.code is None %}No asignado {% else %}{{salesman.code}} {% endif %}
+      </div>
+      <div class="col s3 l3 s12">
+        <div class="more_infor_mayus">Banco</div>
+        {% if salesman.bank is None %}No asignado {% else %}{{salesman.bank}} {% endif %}
+      </div>
+      <div class="col s3 l3 s12">
+        <div class="more_infor_mayus">Cuenta bancaria</div>
+        {% if salesman.bank_account|length >  0 %}{{salesman.bank_account}}{% else %}No asigado{% endif%}
+      </div>
+    </div><!--end row-->
+    <a href="{% if salesman.user.is_active %}{% url 'actives_salesman' %}{% else %}{% url 'inactives_saleman' %}{% endif%}" class="waves-effect waves-light btn">Volver</a>
+    <a href="{% url 'update_salesman' salesman.pk%}" class="waves-effect waves-light btn">Modificar datos</a>
+  </div><!--end col s12-->
+</div><!--End row-->
+{% endblock %}
