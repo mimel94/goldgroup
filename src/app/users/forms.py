@@ -18,10 +18,8 @@ class UserGoldGroupForm(forms.ModelForm):
             'gender',
             'birthdate',
             'phone',
-            'city_residence',
             'address_residence',
-            'email',
-            'password'
+            'email'
         ]
         labels ={
             'first_name':'Primer Nombre'  ,
@@ -33,10 +31,8 @@ class UserGoldGroupForm(forms.ModelForm):
             'gender':'Sexo',
             'birthdate':'Dia de nacimiento',
             'phone':'Telefono',
-            'city_residence':'Ciudad de recidencia',
             'address_residence':'Dirección de recidencia',
-            'email':'Correo',
-            'password':'Contraseña'
+            'email':'Correo'
         }
         widgets = {
             'first_name': forms.TextInput(),
@@ -47,11 +43,9 @@ class UserGoldGroupForm(forms.ModelForm):
             'number_document': forms.TextInput(),
             'gender': forms.Select(),
             'birthdate': forms.DateInput(attrs={'class':'datepicker'}),
-            'phone': forms.TextInput(),
-            'city_residence': forms.Select(attrs={'required':'false'}),
+            'phone': forms.TextInput(),            
             'address_residence':forms.TextInput(),
-            'email':forms.EmailInput(),
-            'password':forms.PasswordInput()
+            'email':forms.EmailInput()
         }
 
 class UserProfileForm(forms.ModelForm):
@@ -70,7 +64,7 @@ class UserProfileForm(forms.ModelForm):
             'bank_account':'Cuenta Bancaria',
             'bank':'Banco',
             'code':'Codigo Digitacion',
-            'line_cgv':'Linea Cgv'
+            'line_cgv':'Corportativo'
         }
 
         widgets ={
