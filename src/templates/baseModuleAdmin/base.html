@@ -30,6 +30,7 @@
     {% block nav %}{% include 'baseModuleAdmin/nav.html'%}{% endblock %}
 
     {% block content %}{% endblock %}
+    {% block final_seccion %} </section> {% endblock%}
 
     {% block footer %}{% endblock %}
     <!-- Sweet Alert JS -->
@@ -44,6 +45,6 @@
     <!-- MaterialDark JS -->
 	  <script src="{% static 'materializeAdministrator/js/main.js'%}"></script>
     {% block extraJsSrc %}{% endblock %}
-    
+
   </body>
 </html>
