@@ -30,15 +30,12 @@
             <td>{% if salesman.user.is_active %}Activo {% else %} Inactivo{% endif %}</td>
 
             <td><a href="{% url 'update_state_salesman' salesman.pk%}">{% if salesman.user.is_active %}Desactivar{% else %}Activar{% endif %}</a></td>
-            <td><a href="#">Mas información</a></td>
+            <td><a href="{% url 'more_info_salesman' salesman.pk%}">Mas información</a></td>
           </tr>
           {% endfor %}
         </thbody>
       </table>
 
     </div><!--end col 12-->
-  </div><!--end row-->
-
-
-  </section>
+  </div><!--end row-->  
 {% endblock %}
