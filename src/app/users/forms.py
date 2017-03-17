@@ -1,6 +1,6 @@
 #-*- coding:utf-8 -*-
 from django import forms
-from .models import UserGoldGroup, UserProfile
+from .models import UserGoldGroup, UserProfile, Code, LineCgv
 from goldGroup import settings
 
 
@@ -43,7 +43,7 @@ class UserGoldGroupForm(forms.ModelForm):
             'number_document': forms.TextInput(),
             'gender': forms.Select(),
             'birthdate': forms.DateInput(attrs={'class':'datepicker'}),
-            'phone': forms.TextInput(),            
+            'phone': forms.TextInput(),
             'address_residence':forms.TextInput(),
             'email':forms.EmailInput()
         }
@@ -73,4 +73,38 @@ class UserProfileForm(forms.ModelForm):
             'bank': forms.Select(),
             'code': forms.Select(),
             'line_cgv': forms.Select()
+        }
+
+class CodeForm(forms.ModelForm):
+    class Meta:
+        model = Code
+        fields = [
+            'user',
+            'number'
+        ]
+        labels = {
+            'user':'Usuario',
+            'number':'Codigo'
+        }
+        widgets = {
+            'user':forms.TextInput(attrs={'class':'search-users',
+                                        'placeholder':"Presione aqui para elegir uno"}),
+            'number': forms.TextInput()
+        }
+
+class LineCgvForm(forms.ModelForm):
+    class Meta:
+        model = LineCgv
+        fields = [
+            'user',
+            'number'
+        ]
+        labels = {
+            'user':'Usuario',
+            'number':'Numero Corportativo'
+        }
+        widgets = {
+            'user':forms.TextInput(attrs={'class':'search-users',
+                                        'placeholder':"Presione aqui para elegir uno"}),
+            'number': forms.TextInput()
         }
