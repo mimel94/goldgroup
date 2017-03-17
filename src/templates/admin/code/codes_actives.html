@@ -1,0 +1,32 @@
+{% extends 'baseModuleAdmin/base.html'%}
+{% block title %}Codigos Activos{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col s12">
+    <table class="responsive-table striped ">
+      <h4>Lista de codigos {% if active %}activos{% else %}inactivos{% endif %}</h4>
+      <thead>
+        <tr>
+          <td>No.</td>
+          <td>Nombre completo</td>
+          <td>Cedula</td>
+          <td>Codigo</td>
+          <td>{% if active %}Desactivar{% else %}Activar{% endif %}</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for code in codes_list %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ code.user.get_full_name }}</td>
+            <td>{{ code.user.number_document }}</td>
+            <td>{{ code.number }}</td>
+            <td><a href="{% url 'update_code_state' code.pk%}">{% if code.is_active %}Desactivar{% else %}Activar{% endif %}</a></td>
+          </tr>
+
+        {% endfor %}
+      </tbody>
+    </table><!--end table-->
+  </div><!-- end class s12-->
+</div><!--end class row -->
+{% endblock %}

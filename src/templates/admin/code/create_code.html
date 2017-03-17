@@ -1,0 +1,52 @@
+{% extends 'baseModuleAdmin/base.html' %}
+{% load static %}
+{% block title %}Crear Codigo{% endblock %}
+{% block extraCss %} <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> {% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col s12">
+    <form method="post">{% csrf_token %}
+      <div class="row">
+        <h4>Registro de codigo</h4>
+        {{ form.errors }}
+        <br>
+        <h5>Datos </h5>
+        <div class="input-field col s3 l3 s12">
+          {{ form.user }}
+          <label class="label-icon" for="id_user"><i class="material-icons">search</i></a>Usuario</label>
+        </div>
+        <div class="input-field col s3 l3 s12">
+          {{form.number}}
+          <label for="{{form.number.name}}">{{ form.number.label }}</label>
+        </div>
+      </div><!--end first row input-->
+      <br>
+      <div class="modal-window">
+        <div class="data">
+          <div class="close">Cerrar X</div>
+          <h4>Asesores</h4>
+          <hr>
+          <table class="highlight responsive-table">
+            <tr>
+              <td>Nombre asesor</td>
+              <td>Cedula </td>
+            </tr>
+          </table>
+          <table id="datos_busqueda" class="highlight responsive-table">
+          </table>
+        </div>
+      </div>
+
+      <div class="row">
+        <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
+          <i class="material-icons right">send</i>
+        </button>
+      </div><!--end row button-->
+    </form><!--end form-->
+   </div>
+  </div><!--firs div -->
+</div><!--firs row -->
+{% endblock %}
+{% block extraJsSrc%}
+<script src="{% static 'locations/locations.js' %}"></script>
+{% endblock %}
