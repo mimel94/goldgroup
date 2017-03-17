@@ -22,6 +22,28 @@
                         <li class="NavLateralDivider"></li>
                         <li><a href="{% url 'inactives_saleman'%}" class="waves-effect waves-light">Asesores Inactivos</a></li>
                     </ul>
+                    <li class="NavLateralDivider"></li>
+                </li>
+                <li>
+                  <a href="#" class="NavLateral-DropDown  waves-effect waves-light"><i class="zmdi zmdi-language-css3 zmdi-hc-fw"></i> <i class="zmdi zmdi-chevron-down NavLateral-CaretDown"></i> Codigos</a>
+                  <ul class="full-width">
+                    <li><a href="{% url 'create_code' %}" class="waves-effect waves-light">Crear codigo</a></li>
+                    <li class="NavLateralDivider"></li>
+                    <li><a href="{% url 'actives_codes'%}" class="waves-effect waves-light">Codigos Activos</a></li>
+                    <li class="NavLateralDivider"></li>
+                    <li><a href="{% url 'deactives_codes'%}" class="waves-effect waves-light">Codigos Inactivos</a></li>
+                  </ul>
+                </li>
+                <li class="NavLateralDivider"></li>
+                <li>
+                  <a href="#" class="NavLateral-DropDown  waves-effect waves-light"><i class="zmdi zmdi-language-css3 zmdi-hc-fw"></i> <i class="zmdi zmdi-chevron-down NavLateral-CaretDown"></i> Linea corporativa</a>
+                  <ul class="full-width">
+                    <li><a href="{% url 'create_cgv' %}" class="waves-effect waves-light">Crear linea</a></li>
+                    <li class="NavLateralDivider"></li>
+                    <li><a href="{% url 'actives_cgv' %}" class="waves-effect waves-light">Lineas activas</a></li>
+                    <li class="NavLateralDivider"></li>
+                    <li><a href="{% url 'inactives_cgv'%}" class="waves-effect waves-light">Lineas inactivas</a></li>
+                  </ul>
                 </li>
                 <li class="NavLateralDivider"></li>
                 <li>
@@ -32,8 +54,6 @@
                       <li><a href="#" class="waves-effect waves-light">Asignar Contratos</a></li>
                       <li class="NavLateralDivider"></li>
                       <li><a href="#" class="waves-effect waves-light">Asignar Linea Cgv</a></li>
-                      <li class="NavLateralDivider"></li>
-                      <li><a href="#" class="waves-effect waves-light">Asignar Codigo</a></li>
                     </ul>
                 </li>
                 <li class="NavLateralDivider"></li>

@@ -69,6 +69,32 @@ $(document).ready(function(){
             NotificationArea.addClass('NotificationArea-show');
         }
     });
+    $('#datos_busqueda ').on('click', function(e){
+      var id = e.target.id;
+      document.getElementById('id_user').value = id;
+      $(".modal-window").slideUp("fast");
+      //$("#id_user").text(id);
+    });
+    $('.search-users').on('click', function(e){
+      $(".modal-window").slideDown("slow");
+      $.getJSON("/busqueda_asesores/",function( data ){
+        var items =[];
+        var data_before = $("#datos_busqueda tbody");
+        $.each( data['result'], function(key,val){
+          items.push("<tr><td id='"+ key +"'>"+ val[0] +"</td><td id='"+ key +"'>"+val[1]+"</td></tr>");
+        });
+        $("#datos_busqueda").empty("#datos_busqueda tr[1]");
+        $(items.join( "" )).appendTo( "#datos_busqueda" );
+        //$("<div>").append("se añade un click").appendTo("#datos_busqueda");
+      });
+
+      //e.preventDefault();
+
+    });
+    $('.close').on('click', function(e){
+      $(".modal-window").slideUp("fast");
+    });
+
 });
 (function($){
     $(window).load(function(){
