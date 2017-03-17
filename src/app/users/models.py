@@ -105,8 +105,9 @@ class Bank(models.Model):
         return u'{0}'.format(self.name)
 
 class Code(models.Model):
+    user = models.OneToOneField(UserGoldGroup, default='')
     number = models.CharField(max_length=10, unique=True)
-    is_active = models.BooleanField()
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.number
@@ -115,8 +116,9 @@ class Code(models.Model):
         return u'{0}'.format(self.number)
 
 class LineCgv(models.Model):
+    user = models.OneToOneField(UserGoldGroup, default='')
     number = models.CharField(max_length=20, unique=True)
-    is_active = models.BooleanField()
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.number
